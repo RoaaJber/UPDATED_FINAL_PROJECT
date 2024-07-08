@@ -21,7 +21,7 @@ class Calculator:
 if __name__ == "__main__":
     calc = Calculator()
 
- # Prompt user for operation
+ #Prompt user for entring the operation he wants:
     operation = input("Enter operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Prompt user for values of x and y
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         print("Invalid input. Please enter numeric values for x and y.")
         exit(1)
 
-    # Perform operation based on user input
+    #Perform operation based on user input
     if operation == "add":
         result = calc.add(x, y)
     elif operation == "subtract":
@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
     print(f"Result of {operation} {x} and {y} is: {result}")
 
-    # Send result to the API endpoint in test.py
+# Send result to the API endpoint in test.py
     base_url = "https://api.math.tools/"
     endpoint = base_url + "send_result"
     payload = {
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         print(f"Error sending result: {e}")
         exit(1)
 ** This class is designed to handle basic arithmetic operations for integers and floats, and it raises an error if we have tried to devide any numer over Zero, it's allwing the user to pass a value and then it will do he arthmatic and then send them to the API end point. 
-=======================================================================================================================================================================++
+==========================================================================================================================================++
 # test.py
 
 import requests
@@ -82,15 +82,16 @@ response = requests.get(endpoint)
 my_num = response.json()
 my_num = my_num["contents"]["nod"]["numbers"]["number"]
 
-# This part sends a GET request to https://api.math.tools/numbers/nod to retrieve some number data (my_num).
-# It extracts my_num from the JSON response (response.json()).
+#This part sends a GET request to https://api.math.tools/numbers/nod to retrieve some number data (my_num).
+#It extracts my_num from the JSON response (response.json()).
 
 
 end_point = base_url + f"numbers/base?number={my_num}&from=10&to=16"
 end_point
 hexa_response = requests.get(end_point)
 hexa_response.json()
-# the above will convert my_num to hexadecimal (base 16)
+
+#the above will convert my_num to hexadecimal (base 16)
 
 # Now, we can retrieve the result from the calculator endpoint
 calculator_endpoint = base_url + "get_result"
@@ -104,6 +105,7 @@ else:
 #Explanation
 
 
-
+# please be noted that there is no requirment files except the resust. 
+##kindly note that i have an issue with sending and retrieving the result from the calculator to the API file. 
 
 
